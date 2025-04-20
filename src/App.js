@@ -10,12 +10,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Rutas públicas */}
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
 
-        {/* Rutas con Navbar */}
         <Route element={<Layout />}>
+          <Route path="/" element={<Dashboard />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/perfil" element={<PerfilUsuario />} />
           <Route path="/configuracion" element={<Configuracion />} />

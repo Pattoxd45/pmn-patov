@@ -3,8 +3,20 @@ import { Link } from 'react-router-dom';
 function Login() {
   return (
     <div>
-      <h1>Login</h1>
-      <Link to="/registro">Ir a Registro</Link>
+      <h2>Login</h2>
+      <form>
+        <div>
+          <label>Usuario</label><br />
+          <input type="text" placeholder="Usuario" />
+        </div>
+        <div>
+          <label>Contraseña</label><br />
+          <input type="password" placeholder="Contraseña" />
+        </div>
+        <button type="submit">Ingresar</button>
+      </form>
+      <br />
+      <Link to="/registro">¿No tenés cuenta? Registrate</Link>
     </div>
   );
 }
