@@ -1,13 +1,12 @@
-import Navbar from '../components/Navbar'
+import { Link } from 'react-router-dom';
 
 function Configuracion() {
-    return (
-      <div>
-        <h1>Configuración</h1>
-        <a href="/dashboard">Volver al Dashboard</a>
-      </div>
-    );
-  }
-  
-  export default Configuracion;
-  
+  return (
+    <div>
+      <h1>Configuración</h1>
+      <Link to="/dashboard">Volver al Dashboard</Link>
+    </div>
+  );
+}
+
+export default Configuracion;
