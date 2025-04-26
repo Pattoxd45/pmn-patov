@@ -1,3 +1,93 @@
+
+MUY IMPORTANTE LEER!!!!!!!!
+Datos para iniciar sesión:
+Correo: usuario@empresa.cl
+
+Contraseña: 123456
+
+Aplicación de Vacaciones - Attendify
+Nuestro objetivo es crear una aplicación para poder solicitar vacaciones para trabajadores de ciertas empresas, teniendo en cuenta la recepción y resolución de su solicitud de vacaciones.
+
+
+Estructura del Proyecto
+
+src/
+├── components/
+│   ├── Layout.js
+│   ├── Navbar.js
+│   └── PrivateRoute.js
+├── context/
+│   └── AuthContext.js
+├── pages/
+│   ├── Inicio.js
+│   ├── Dashboard.js
+│   ├── Login.js
+│   ├── PerfilUsuario.js
+│   ├── Configuracion.js
+│   └── Registro.js
+├── utils/
+│   └── fakeAuth.js
+├── App.js
+├── index.js
+└── App.css
+
+
+Funcionalidades principales
+Inicio: Página de bienvenida para todos los usuarios.
+
+Login: Formulario de acceso al sistema.
+
+Registro: Creación de una nueva cuenta.
+
+Dashboard: Panel principal que muestra información relevante.
+
+Perfil de Usuario: Datos personales y configuración de cuenta (requiere login).
+
+Configuración: Ajustes avanzados (requiere login).
+
+Protección de rutas: Acceso controlado usando PrivateRoute.
+
+
+
+Autenticación
+Context API es utilizada para manejar el estado de autenticación globalmente (AuthContext.js).
+
+Para simular el login, se usa una función de autenticación falsa (fakeAuth.js)
+
+
+Rutas de Navegación
+
+Ruta	              Componente	             Protección
+/ ó /inicio	            Inicio	                   Pública
+/login	                Login	                   Pública
+/registro	          Registro	                   Pública
+/dashboard	          Dashboard	                   Pública
+/perfil	            PerfilUsuario	       Protegida (requiere login)
+/configuracion	    Configuracion	       Protegida (requiere login)
+
+
+Tecnologías Usadas
+React
+
+React Router DOM
+
+Context API (para la autenticación)
+
+HTML y CSS básico
+
+
+Guia Simple de como usar:
+
+En el directorio del proyecto puedes correr:
+
+npm start
+Corre la aplicación en modo de desarrollo.
+Abre http://localhost:3000 para verla en el navegador.
+
+npm run build
+Construye la aplicación para producción en la carpeta build/
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
