@@ -1,15 +1,17 @@
 
-MUY IMPORTANTE LEER!!!!!!!!
+#  MUY IMPORTANTE LEER!!!!!!!!
 Datos para iniciar sesión:
 Correo: usuario@empresa.cl
 
 Contraseña: 123456
 
+# Objetivo Esperado
+
 Aplicación de Vacaciones - Attendify
 Nuestro objetivo es crear una aplicación para poder solicitar vacaciones para trabajadores de ciertas empresas, teniendo en cuenta la recepción y resolución de su solicitud de vacaciones.
 
 
-Estructura del Proyecto
+# Estructura del Proyecto
 
 src/
 ├── components/
@@ -32,7 +34,8 @@ src/
 └── App.css
 
 
-Funcionalidades principales
+# Funcionalidades principales
+
 Inicio: Página de bienvenida para todos los usuarios.
 
 Login: Formulario de acceso al sistema.
@@ -49,13 +52,14 @@ Protección de rutas: Acceso controlado usando PrivateRoute.
 
 
 
-Autenticación
+# Autenticación
+
 Context API es utilizada para manejar el estado de autenticación globalmente (AuthContext.js).
 
 Para simular el login, se usa una función de autenticación falsa (fakeAuth.js)
 
 
-Rutas de Navegación
+# Rutas de Navegación
 
 Ruta	              Componente	             Protección
 / ó /inicio	            Inicio	                   Pública
@@ -66,7 +70,8 @@ Ruta	              Componente	             Protección
 /configuracion	    Configuracion	       Protegida (requiere login)
 
 
-Tecnologías Usadas
+# Tecnologías Usadas
+
 React
 
 React Router DOM
@@ -76,7 +81,7 @@ Context API (para la autenticación)
 HTML y CSS básico
 
 
-Guia Simple de como usar:
+# Guia Simple de como usar:
 
 En el directorio del proyecto puedes correr:
 
