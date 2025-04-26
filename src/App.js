@@ -3,6 +3,7 @@ import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 
 import Layout from './components/Layout';
+import Inicio from './pages/Inicio'; 
 import Login from './pages/Login';
 import Registro from './pages/Registro';
 import Dashboard from './pages/Dashboard';
@@ -15,13 +16,11 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Login />} />
+            <Route index element={<Inicio />} />
+            <Route path="inicio" element={<Inicio />} />
+            <Route path="login" element={<Login />} />
             <Route path="registro" element={<Registro />} />
-            <Route path="dashboard" element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            } />
+            <Route path="dashboard" element={<Dashboard />} />
             <Route path="perfil" element={
               <PrivateRoute>
                 <PerfilUsuario />
