@@ -3,7 +3,7 @@
 Datos para iniciar sesión:
 Correo: usuario@empresa.cl
 
-Contraseña: 123456
+Contraseña: vacaciones123
 
 # Objetivo Esperado
 
