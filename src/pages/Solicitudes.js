@@ -77,6 +77,8 @@ function Solicitudes() {
   };
 
   const eliminarSolicitud = (id) => {
+    const confirmar = window.confirm('¿Estás seguro de eliminar esta solicitud?');
+    if (!confirmar) return;
     const actualizadas = solicitudes.filter((s) => s.id !== id);
     setSolicitudes(actualizadas);
   };
