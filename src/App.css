@@ -1,13 +1,3 @@
-:root {
-  --bg: #f8f9fa;
-  --text: #333;
-  --header-bg: #343a40;
-  --navbar-bg: #e9ecef;
-  --primary: #007bff;
-  --primary-hover: #0056b3;
-  --success: green;
-}
-
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: var(--bg);
