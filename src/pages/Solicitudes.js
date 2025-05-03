@@ -12,13 +12,14 @@ function Solicitudes() {
     motivo: '',
   });
 
+  const [mensajeExito, setMensajeExito] = useState('');
+
   useEffect(() => {
     const datosGuardados = localStorage.getItem('solicitudes');
 
     if (datosGuardados) {
       setSolicitudes(JSON.parse(datosGuardados));
     } else {
-      // Datos de prueba
       const datosEjemplo = [
         {
           id: 1,
@@ -64,16 +65,13 @@ function Solicitudes() {
       return;
     }
 
-    const nueva = {
-      ...nuevaSolicitud,
-      id: Date.now(),
-    };
-
+    const nueva = { ...nuevaSolicitud, id: Date.now() };
     const nuevasSolicitudes = [...solicitudes, nueva];
     setSolicitudes(nuevasSolicitudes);
-    localStorage.setItem('solicitudes', JSON.stringify(nuevasSolicitudes));
-
     setNuevaSolicitud({ tipo: '', fecha: '', motivo: '' });
+    setMensajeExito('¡Solicitud enviada con éxito!');
+
+    setTimeout(() => setMensajeExito(''), 3000);
   };
 
   const eliminarSolicitud = (id) => {
@@ -86,6 +84,8 @@ function Solicitudes() {
   return (
     <div>
       <h1>Solicitudes de Vacaciones</h1>
+
+      {mensajeExito && <p className="mensaje-exito">{mensajeExito}</p>}
 
       <form onSubmit={handleSubmit} style={{ marginBottom: '2rem' }}>
         <div>
