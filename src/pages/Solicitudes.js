@@ -7,8 +7,8 @@ function Solicitudes() {
   });
 
   const [nuevaSolicitud, setNuevaSolicitud] = useState({
-    inicio: '',
-    fin: '',
+    tipo: '',
+    fecha: '',
     motivo: '',
   });
 
@@ -22,18 +22,22 @@ function Solicitudes() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!nuevaSolicitud.inicio || !nuevaSolicitud.fin || !nuevaSolicitud.motivo) {
-      alert('Todos los campos son obligatorios.');
+
+    if (!nuevaSolicitud.tipo || !nuevaSolicitud.fecha || !nuevaSolicitud.motivo) {
+      alert('Por favor completa todos los campos');
       return;
     }
 
     const nueva = {
-      id: Date.now(),
       ...nuevaSolicitud,
+      id: Date.now(),
     };
 
-    setSolicitudes([...solicitudes, nueva]);
-    setNuevaSolicitud({ inicio: '', fin: '', motivo: '' });
+    const nuevasSolicitudes = [...solicitudes, nueva];
+    setSolicitudes(nuevasSolicitudes);
+    localStorage.setItem('solicitudes', JSON.stringify(nuevasSolicitudes));
+
+    setNuevaSolicitud({ tipo: '', fecha: '', motivo: '' });
   };
 
   const eliminarSolicitud = (id) => {
@@ -47,16 +51,31 @@ function Solicitudes() {
 
       <form onSubmit={handleSubmit} style={{ marginBottom: '2rem' }}>
         <div>
-          <label>Inicio: </label>
-          <input type="date" name="inicio" value={nuevaSolicitud.inicio} onChange={handleChange} />
+          <label>Tipo: </label>
+          <input
+            type="text"
+            name="tipo"
+            value={nuevaSolicitud.tipo}
+            onChange={handleChange}
+          />
         </div>
         <div>
-          <label>Fin: </label>
-          <input type="date" name="fin" value={nuevaSolicitud.fin} onChange={handleChange} />
+          <label>Fecha: </label>
+          <input
+            type="date"
+            name="fecha"
+            value={nuevaSolicitud.fecha}
+            onChange={handleChange}
+          />
         </div>
         <div>
           <label>Motivo: </label>
-          <input type="text" name="motivo" value={nuevaSolicitud.motivo} onChange={handleChange} />
+          <input
+            type="text"
+            name="motivo"
+            value={nuevaSolicitud.motivo}
+            onChange={handleChange}
+          />
         </div>
         <button type="submit">Enviar Solicitud</button>
       </form>
@@ -68,8 +87,11 @@ function Solicitudes() {
         <ul>
           {solicitudes.map((s) => (
             <li key={s.id}>
-              {s.inicio} a {s.fin} - {s.motivo}
-              <button onClick={() => eliminarSolicitud(s.id)} style={{ marginLeft: '1rem' }}>
+              {s.tipo} - {s.fecha} - {s.motivo}
+              <button
+                onClick={() => eliminarSolicitud(s.id)}
+                style={{ marginLeft: '1rem' }}
+              >
                 Eliminar
               </button>
             </li>
