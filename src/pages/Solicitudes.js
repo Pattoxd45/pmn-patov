@@ -50,8 +50,17 @@ function Solicitudes() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!nuevaSolicitud.tipo || !nuevaSolicitud.fecha || !nuevaSolicitud.motivo) {
-      alert('Por favor completa todos los campos');
+    // Validaciones
+    if (!nuevaSolicitud.tipo || nuevaSolicitud.tipo.length < 3) {
+      alert('El tipo debe tener al menos 3 caracteres');
+      return;
+    }
+    if (!nuevaSolicitud.motivo || nuevaSolicitud.motivo.length < 5) {
+      alert('El motivo debe tener al menos 5 caracteres');
+      return;
+    }
+    if (new Date(nuevaSolicitud.fecha) < new Date()) {
+      alert('La fecha no puede ser pasada');
       return;
     }
 
