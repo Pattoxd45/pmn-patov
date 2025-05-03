@@ -9,6 +9,7 @@ import Registro from './pages/Registro';
 import Dashboard from './pages/Dashboard';
 import PerfilUsuario from './pages/PerfilUsuario';
 import Configuracion from './pages/Configuracion';
+import Solicitudes from './pages/Solicitudes'; 
 
 function App() {
   return (
@@ -29,6 +30,11 @@ function App() {
             <Route path="configuracion" element={
               <PrivateRoute>
                 <Configuracion />
+              </PrivateRoute>
+            } />
+            <Route path="solicitudes" element={ 
+              <PrivateRoute>
+                <Solicitudes />
               </PrivateRoute>
             } />
           </Route>
