@@ -13,6 +13,33 @@ function Solicitudes() {
   });
 
   useEffect(() => {
+    const datosGuardados = localStorage.getItem('solicitudes');
+
+    if (datosGuardados) {
+      setSolicitudes(JSON.parse(datosGuardados));
+    } else {
+      // Datos de prueba
+      const datosEjemplo = [
+        {
+          id: 1,
+          tipo: 'Vacaciones',
+          fecha: '2025-06-15',
+          motivo: 'Viaje familiar a la playa',
+        },
+        {
+          id: 2,
+          tipo: 'Permiso sin goce de sueldo',
+          fecha: '2025-07-02',
+          motivo: 'Trámite personal',
+        },
+      ];
+
+      localStorage.setItem('solicitudes', JSON.stringify(datosEjemplo));
+      setSolicitudes(datosEjemplo);
+    }
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
   }, [solicitudes]);
 
