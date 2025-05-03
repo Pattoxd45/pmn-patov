@@ -1,19 +1,30 @@
+:root {
+  --bg: #f8f9fa;
+  --text: #333;
+  --header-bg: #343a40;
+  --navbar-bg: #e9ecef;
+  --primary: #007bff;
+  --primary-hover: #0056b3;
+  --success: green;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f8f9fa;
+  background-color: var(--bg);
+  color: var(--text);
   margin: 0;
   padding: 0;
 }
 
 header {
-  background-color: #343a40;
+  background-color: var(--header-bg);
   color: white;
   padding: 1rem;
   text-align: center;
 }
 
 .navbar {
-  background-color: #e9ecef;
+  background-color: var(--navbar-bg);
   padding: 1rem;
   display: flex;
   justify-content: center;
@@ -22,14 +33,14 @@ header {
 
 .navbar a {
   text-decoration: none;
-  color: #007bff;
+  color: var(--primary);
   font-weight: bold;
 }
 
 .bienvenida {
   margin-left: auto;
   font-style: italic;
-  color: #333;
+  color: var(--text);
 }
 
 main {
@@ -39,18 +50,19 @@ main {
 button {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background-color: #007bff;
+  background-color: var(--primary);
   border: none;
   color: white;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: var(--primary-hover);
 }
 
 .mensaje-exito {
-  color: green;
+  color: var(--success);
   margin-top: 1rem;
 }
 
