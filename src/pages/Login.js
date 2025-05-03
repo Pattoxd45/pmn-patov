@@ -11,6 +11,12 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!email || !password) {
+      setError('Todos los campos son obligatorios');
+      return;
+    }
+
     const success = login(email, password);
     if (success) {
       navigate('/dashboard');
@@ -39,7 +45,8 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {/* Estilo opcional para el mensaje de error */}
+        {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
         <button type="submit">Ingresar</button>
       </form>
       <br />
