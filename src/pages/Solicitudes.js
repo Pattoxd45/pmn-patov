@@ -12,7 +12,7 @@ function Solicitudes() {
     motivo: '',
   });
 
-  const [mensajeExito, setMensajeExito] = useState('');
+  const [mensaje, setMensaje] = useState('');
 
   useEffect(() => {
     const datosGuardados = localStorage.getItem('solicitudes');
@@ -66,12 +66,10 @@ function Solicitudes() {
     }
 
     const nueva = { ...nuevaSolicitud, id: Date.now() };
-    const nuevasSolicitudes = [...solicitudes, nueva];
-    setSolicitudes(nuevasSolicitudes);
+    setSolicitudes([...solicitudes, nueva]);
     setNuevaSolicitud({ tipo: '', fecha: '', motivo: '' });
-    setMensajeExito('¡Solicitud enviada con éxito!');
-
-    setTimeout(() => setMensajeExito(''), 3000);
+    setMensaje('¡Solicitud enviada con éxito!');
+    setTimeout(() => setMensaje(''), 3000);
   };
 
   const eliminarSolicitud = (id) => {
@@ -79,13 +77,15 @@ function Solicitudes() {
     if (!confirmar) return;
     const actualizadas = solicitudes.filter((s) => s.id !== id);
     setSolicitudes(actualizadas);
+    setMensaje('Solicitud eliminada correctamente');
+    setTimeout(() => setMensaje(''), 3000);
   };
 
   return (
-    <div>
+    <div className="card" style={{ padding: '1rem' }}>
       <h1>Solicitudes de Vacaciones</h1>
 
-      {mensajeExito && <p className="mensaje-exito">{mensajeExito}</p>}
+      {mensaje && <p style={{ color: 'green' }}>{mensaje}</p>}
 
       <form onSubmit={handleSubmit} style={{ marginBottom: '2rem' }}>
         <div>
@@ -115,7 +115,7 @@ function Solicitudes() {
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Enviar Solicitud</button>
+        <button type="submit" className="btn">Enviar Solicitud</button>
       </form>
 
       <h2>Mis Solicitudes</h2>
@@ -124,14 +124,11 @@ function Solicitudes() {
       ) : (
         <ul>
           {solicitudes.map((s) => (
-            <li key={s.id}>
-              {s.tipo} - {s.fecha} - {s.motivo}
-              <button
-                onClick={() => eliminarSolicitud(s.id)}
-                style={{ marginLeft: '1rem' }}
-              >
-                Eliminar
-              </button>
+            <li key={s.id} className="card" style={{ marginBottom: '1rem', padding: '1rem' }}>
+              <p><strong>Fecha:</strong> {s.fecha}</p>
+              <p><strong>Tipo:</strong> {s.tipo}</p>
+              <p><strong>Motivo:</strong> {s.motivo}</p>
+              <button className="btn" onClick={() => eliminarSolicitud(s.id)}>Eliminar</button>
             </li>
           ))}
         </ul>
