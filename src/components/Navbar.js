@@ -8,6 +8,7 @@ function Navbar() {
       <Link to="/perfil">Perfil</Link>
       <Link to="/configuracion">Configuración</Link>
       <Link to="/login" style={{ color: 'blue' }}>Login</Link>
+      <Link to="/solicitudes">Solicitudes</Link>
     </nav>
   );
 }
