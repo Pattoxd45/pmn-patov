@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
+import './App.css';
 
 import Layout from './components/Layout';
 import Inicio from './pages/Inicio'; 
