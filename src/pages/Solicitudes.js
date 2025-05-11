@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import imagen2 from '../Images/2.jpg';
 
 function Solicitudes() {
   const [solicitudes, setSolicitudes] = useState(() => {
@@ -51,7 +52,6 @@ function Solicitudes() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validaciones
     if (!nuevaSolicitud.tipo || nuevaSolicitud.tipo.length < 3) {
       alert('El tipo debe tener al menos 3 caracteres');
       return;
@@ -82,14 +82,14 @@ function Solicitudes() {
   };
 
   return (
-    <div className="card" style={{ padding: '1rem' }}>
+    <div className="card">
       <h1>Solicitudes de Vacaciones</h1>
 
       {mensaje && <p style={{ color: 'green' }}>{mensaje}</p>}
 
-      <form onSubmit={handleSubmit} style={{ marginBottom: '2rem' }}>
+      <form onSubmit={handleSubmit} className="card" style={{ marginBottom: '2rem' }}>
         <div>
-          <label>Tipo: </label>
+          <label>Tipo:</label>
           <input
             type="text"
             name="tipo"
@@ -98,7 +98,7 @@ function Solicitudes() {
           />
         </div>
         <div>
-          <label>Fecha: </label>
+          <label>Fecha:</label>
           <input
             type="date"
             name="fecha"
@@ -107,7 +107,7 @@ function Solicitudes() {
           />
         </div>
         <div>
-          <label>Motivo: </label>
+          <label>Motivo:</label>
           <input
             type="text"
             name="motivo"
@@ -115,20 +115,23 @@ function Solicitudes() {
             onChange={handleChange}
           />
         </div>
-        <button type="submit" className="btn">Enviar Solicitud</button>
+        <button type="submit">Enviar Solicitud</button>
       </form>
 
       <h2>Mis Solicitudes</h2>
       {solicitudes.length === 0 ? (
-        <p>No hay solicitudes registradas.</p>
+        <div style={{ textAlign: 'center' }}>
+          <p>No hay solicitudes registradas.</p>
+          <img src={imagen2} alt="Sin solicitudes" className="decorativa" />
+        </div>
       ) : (
         <ul>
           {solicitudes.map((s) => (
-            <li key={s.id} className="card" style={{ marginBottom: '1rem', padding: '1rem' }}>
+            <li key={s.id} className="card">
               <p><strong>Fecha:</strong> {s.fecha}</p>
               <p><strong>Tipo:</strong> {s.tipo}</p>
               <p><strong>Motivo:</strong> {s.motivo}</p>
-              <button className="btn" onClick={() => eliminarSolicitud(s.id)}>Eliminar</button>
+              <button onClick={() => eliminarSolicitud(s.id)}>Eliminar</button>
             </li>
           ))}
         </ul>
