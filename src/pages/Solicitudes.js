@@ -82,61 +82,103 @@ function Solicitudes() {
   };
 
   return (
-    <div className="card">
-      <h1>Solicitudes de Vacaciones</h1>
+    <main style={{
+      padding: '2rem',
+      position: 'relative',
+      minHeight: 'calc(100vh - 120px)',
+      backgroundImage: `url(${imagen2})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
+      backgroundRepeat: 'no-repeat'
+    }}>
+      {/* Capa semitransparente para mejorar legibilidad */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+        zIndex: 0
+      }}></div>
 
-      {mensaje && <p style={{ color: 'green' }}>{mensaje}</p>}
+      {/* Contenido principal */}
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <div className="card">
+          <h1>Solicitudes de Vacaciones</h1>
 
-      <form onSubmit={handleSubmit} className="card" style={{ marginBottom: '2rem' }}>
-        <div>
-          <label>Tipo:</label>
-          <input
-            type="text"
-            name="tipo"
-            value={nuevaSolicitud.tipo}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Fecha:</label>
-          <input
-            type="date"
-            name="fecha"
-            value={nuevaSolicitud.fecha}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Motivo:</label>
-          <input
-            type="text"
-            name="motivo"
-            value={nuevaSolicitud.motivo}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit">Enviar Solicitud</button>
-      </form>
+          {mensaje && <p className="mensaje-exito">{mensaje}</p>}
 
-      <h2>Mis Solicitudes</h2>
-      {solicitudes.length === 0 ? (
-        <div style={{ textAlign: 'center' }}>
-          <p>No hay solicitudes registradas.</p>
-          <img src={imagen2} alt="Sin solicitudes" className="decorativa" />
+          <form onSubmit={handleSubmit} className="card" style={{ 
+            marginBottom: '2rem',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)'
+          }}>
+            <div>
+              <label>Tipo:</label>
+              <input
+                type="text"
+                name="tipo"
+                value={nuevaSolicitud.tipo}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </div>
+            <div>
+              <label>Fecha:</label>
+              <input
+                type="date"
+                name="fecha"
+                value={nuevaSolicitud.fecha}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </div>
+            <div>
+              <label>Motivo:</label>
+              <input
+                type="text"
+                name="motivo"
+                value={nuevaSolicitud.motivo}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </div>
+            <button type="submit">Enviar Solicitud</button>
+          </form>
+
+          <h2>Mis Solicitudes</h2>
+          {solicitudes.length === 0 ? (
+            <div style={{ textAlign: 'center' }}>
+              <p>No hay solicitudes registradas.</p>
+            </div>
+          ) : (
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              {solicitudes.map((s) => (
+                <li 
+                  key={s.id} 
+                  className="card" 
+                  style={{ 
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    marginBottom: '1rem'
+                  }}
+                >
+                  <p><strong>Fecha:</strong> {s.fecha}</p>
+                  <p><strong>Tipo:</strong> {s.tipo}</p>
+                  <p><strong>Motivo:</strong> {s.motivo}</p>
+                  <button 
+                    onClick={() => eliminarSolicitud(s.id)}
+                    style={{ marginTop: '0.5rem' }}
+                  >
+                    Eliminar
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
-      ) : (
-        <ul>
-          {solicitudes.map((s) => (
-            <li key={s.id} className="card">
-              <p><strong>Fecha:</strong> {s.fecha}</p>
-              <p><strong>Tipo:</strong> {s.tipo}</p>
-              <p><strong>Motivo:</strong> {s.motivo}</p>
-              <button onClick={() => eliminarSolicitud(s.id)}>Eliminar</button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+      </div>
+    </main>
   );
 }
 
